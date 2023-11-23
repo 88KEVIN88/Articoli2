@@ -67,5 +67,22 @@ namespace Articoli2
             listView1.Items.Add($"Codice:{codice.ToString()},Descrizione:{descrizione},Prezzo:{articoloarr[cont].Sconta(Tessera).ToString()},Anno:{anno.ToString()},Giorni:{giorni},Tessera:{Tessera.ToString()}");
             cont++;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            listView1.Clear();
+
+            double tot = 0;
+
+            for (int i = 0; i < cont; i++)
+            {
+                listView1.Items.Add(articoloarr[i].ToString());
+                double sc = articoloarr[i].Sconta(checkBox1.Checked);
+                tot += sc;
+            }
+
+            listView1.Items.Add($"\n\n {tot}");
+        }
+       
     }
 }
